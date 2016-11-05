@@ -4,7 +4,7 @@ namespace App;
 
 use GuzzleHttp\Client;
 
-use App\WeatherData;
+use App\WeatherObject;
 use App\WeatherDataFactories;
 
 class getWeatherInfo
@@ -16,21 +16,41 @@ class getWeatherInfo
   public static function callForecastAPI($latAndLong)
   {
 
-    $latLong = $this->getLatAndLong();
-
     $urlBase = "https://api.darksky.net/forecast/";
 
-    $url = $urlBase . self::API_KEY . "/" . $latLong;
+    $url = $urlBase . self::API_KEY . "/" . $latAndLong;
 
     $client = new Client();
 
     $response = $client->request('GET', $url, [
       'query' => 'exclude=minutely,alerts,flags']);
 
-    $weather = json_decode($response->getBody());
+    $weather = json_decode($response->getBody(), true);
 
     return $weather;
 
   }
+
+  public static function getCurrentWeather($latAndLong){
+
+    $weather = self::callForecastAPI($latAndLong);
+    return $weather['currently'];
+
+  }
+
+  public static function getHourWeather($latAndLong){
+
+    $weather = self::callForecastAPI($latAndLong);
+    return $weather['hourly'];
+
+  }
+
+  public static function getDayWeather($latAndLong){
+
+    $weather = self::callForecastAPI($latAndLong);
+    return $weather['daily'];
+
+  }
+
 
 }

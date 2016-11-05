@@ -11,8 +11,9 @@
 
 @section('content')
 
+<h1> {{ $day->getMaxTemp() }}</h1>
 
-
+<h1> {{ $day->getMinTemp() }}</h1>
 
 
 @stop

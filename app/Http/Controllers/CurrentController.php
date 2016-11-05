@@ -3,37 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 use App\Http\Requests;
 use App\GetWeatherInfo;
+use App\Today;
+
 
 class CurrentController extends Controller
 {
 
-    public function getHomeView()
+    public function getCurrentView()
     {
       $latAndLong = "42.3601,-71.0589";
-      $weather = GetWeatherInfo::callForecastAPI($latAndLong);
-      Log::debug($weather);
+      $currentWeather = GetWeatherInfo::getCurrentWeather($latAndLong);
+      $time = $currentWeather['time'];
+      $summary = $currentWeather['summary'];
+      $icon = $currentWeather['icon'];
+      $humidity = $currentWeather['humidity'];
+      $precipProbability = $currentWeather['precipProbability'];
+      $temp = $currentWeather['temperature'];
 
+      $today = new Today($time, $summary, $icon, $humidity, $precipProbability);
+      $today->setTemp($temp);
 
-      return view('home')->with('todayWeather');
+      return view('home')->with(['today' => $today]);
 
     }
 
-
-    public function getHoursView()
-    {
-
-      //return view('hourly')->with('hourlyWeather', $hourlyWeather);
-    }
-
-    // public function getDaysView()
-    // {
-    //
-    //   $dailyWeather = $this->getDailyWeather();
-    //
-    //   return view('week')->with('dailyWeather', $dailyWeather);
-    // }
 }

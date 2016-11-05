@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'PageController@getHomeView');
+Route::get('/', 'CurrentController@getCurrentView');
 
-Route::get('/hourly-forecast', 'PageController@getHoursView');
+Route::get('/hourly-forecast', 'HourController@getHoursView');
 
-Route::get('/weekly-forecast', 'PageController@getDaysView');
+Route::get('/weekly-forecast', 'DayController@getDaysView');

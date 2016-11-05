@@ -2,7 +2,11 @@
 
 namespace app;
 
-class weatherDataFactory{
+use App\Day;
+use App\Hour;
+
+
+class WeatherDataFactories{
 
   public static function createDay($time, $summary, $icon, $humidity, $precipProbability){
     return new day($time, $summary, $icon, $humidity, $precipProbability);

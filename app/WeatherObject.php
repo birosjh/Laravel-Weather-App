@@ -2,7 +2,7 @@
 
 namespace app;
 
-abstract class weatherObject
+abstract class WeatherObject
 {
   protected $time;
 
@@ -47,48 +47,4 @@ abstract class weatherObject
     return $this->precipProbability;
   }
 
-}
-
-class day extends weatherObject
-{
-  protected $maxTemp;
-
-  protected $minTemp;
-
-  public function setMaxTemp($maxTemp)
-  {
-    $this->maxTemp = $maxTemp;
-  }
-
-  public function setMinTemp($minTemp)
-  {
-    $this->minTemp = $minTemp;
-  }
-
-  public function getMaxTemp($maxTemp)
-  {
-    return $this->maxTemp;
-  }
-
-  public function getMinTemp($minTemp)
-  {
-    return $this->minTemp;
-  }
-
-
-}
-
-class hour extends weatherObject
-{
-  protected $temp;
-
-  public function setTemp($temp)
-  {
-    $this->temp = $temp;
-  }
-
-  public function getTemp($temp)
-  {
-    return $this->temp;
-  }
 }

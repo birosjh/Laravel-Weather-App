@@ -11,6 +11,6 @@
 
 @section('content')
 
-  <h1>{{ $todayWeather->summary }}</h1>
+  <h1>{{ $today->getTemp() }}</h1>
 
 @stop
