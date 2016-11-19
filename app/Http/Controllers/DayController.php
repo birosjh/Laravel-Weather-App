@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use App\Http\Requests;
 use App\GetWeatherInfo;
@@ -15,19 +16,27 @@ class DayController extends Controller
   {
     $latAndLong = "42.3601,-71.0589";
     $dayWeather = GetWeatherInfo::getDayWeather($latAndLong);
-    $time = $dayWeather['data'][0]['time'];
-    $summary = $dayWeather['data'][0]['summary'];
-    $icon = $dayWeather['data'][0]['icon'];
-    $humidity = $dayWeather['data'][0]['humidity'];
-    $precipProbability = $dayWeather['data'][0]['precipProbability'];
-    $maxTemp = $dayWeather['data'][0]['temperatureMax'];
-    $minTemp = $dayWeather['data'][0]['temperatureMin'];
+    Log::debug($dayWeather);
+    $dayCollection = collect();
 
-    $day = WeatherDataFactories::createDay($time, $summary, $icon, $humidity, $precipProbability);
-    $day->setMinTemp($minTemp);
-    $day->setMaxTemp($maxTemp);
+    for($i = 0; $i < sizeOf($dayWeather['data']); $i++){
+      $time = date("l", $dayWeather['data'][$i]['time']);
+      $summary = $dayWeather['data'][$i]['summary'];
+      $icon = $dayWeather['data'][$i]['icon'];
+      $humidity = $dayWeather['data'][$i]['humidity'];
+      $precipProbability = $dayWeather['data'][$i]['precipProbability'];
+      $maxTemp = $dayWeather['data'][$i]['temperatureMax'];
+      $minTemp = $dayWeather['data'][$i]['temperatureMin'];
 
-    return view('daily')->with(['day' => $day]);
+      $dayCollection->push(WeatherDataFactories::createDay($time, $summary, $icon, $humidity, $precipProbability));
+      $dayCollection[$i]->setMinTemp($minTemp);
+      $dayCollection[$i]->setMaxTemp($maxTemp);
+
+
+    }
+
+
+    return view('daily')->with(['dayCollection' => $dayCollection]);
 
   }
 }

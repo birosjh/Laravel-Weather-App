@@ -5766,4 +5766,11 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.time-unit, .hour, .day {
+  background-color: #49749c;
+  margin: 10px; }
+  .time-unit p, .hour p, .day p {
+    color: black;
+    width: 100%; }
+
 /*# sourceMappingURL=app.css.map */

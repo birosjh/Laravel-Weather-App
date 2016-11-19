@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $("#hello").css("color", "red");
+  $("#hello").attr("color", "red");
 
 })
 

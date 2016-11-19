@@ -10,15 +10,13 @@ use App\WeatherDataFactories;
 class getWeatherInfo
 {
 
-  const API_KEY = "b76d32714d01206752cb63a0fae1341d";
-
 
   public static function callForecastAPI($latAndLong)
   {
 
     $urlBase = "https://api.darksky.net/forecast/";
 
-    $url = $urlBase . self::API_KEY . "/" . $latAndLong;
+    $url = $urlBase . config('secrets.darkweb_api_key') . "/" . $latAndLong;
 
     $client = new Client();
 
@@ -31,21 +29,24 @@ class getWeatherInfo
 
   }
 
-  public static function getCurrentWeather($latAndLong){
+  public static function getCurrentWeather($latAndLong)
+  {
 
     $weather = self::callForecastAPI($latAndLong);
     return $weather['currently'];
 
   }
 
-  public static function getHourWeather($latAndLong){
+  public static function getHourWeather($latAndLong)
+  {
 
     $weather = self::callForecastAPI($latAndLong);
     return $weather['hourly'];
 
   }
 
-  public static function getDayWeather($latAndLong){
+  public static function getDayWeather($latAndLong)
+  {
 
     $weather = self::callForecastAPI($latAndLong);
     return $weather['daily'];

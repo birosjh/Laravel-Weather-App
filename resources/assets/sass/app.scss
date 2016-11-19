@@ -7,3 +7,21 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.time-unit {
+  background-color: #49749c;
+  margin: 10px;
+  p {
+    color: black;
+    width: 100%;
+  }
+}
+
+.hour{
+  @extend .time-unit;
+
+}
+
+.day{
+  @extend .time-unit;
+}

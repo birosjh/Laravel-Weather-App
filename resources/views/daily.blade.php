@@ -11,9 +11,27 @@
 
 @section('content')
 
-<h1> {{ $day->getMaxTemp() }}</h1>
+  @foreach($dayCollection as $day)
 
-<h1> {{ $day->getMinTemp() }}</h1>
+  <div class="day container">
+
+    <p>Time: {{ $day->getTime() }}</p>
+
+    <p>Summary: {{ $day->getSummary() }}</p>
+
+    <p>Icon: {{ $day->getIcon() }}</p>
+
+    <p>Humidity: {{ $day->getHumidity() }}</p>
+
+    <p>Precip Probability: {{ $day->getPrecipProbability() }}</p>
+
+    <p>Max Temp: {{ $day->getMaxTemp() }}</p>
+
+    <p>Min Temp: {{ $day->getMinTemp() }}</p>
+
+  </div>
+
+  @endforeach
 
 
 @stop
