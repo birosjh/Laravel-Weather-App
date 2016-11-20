@@ -12,6 +12,8 @@ abstract class WeatherObject
 
   protected $humidity;
 
+  protected $precipProbability;
+
   public function __construct($time, $summary, $icon, $humidity, $precipProbability)
   {
     $this->time = $time;

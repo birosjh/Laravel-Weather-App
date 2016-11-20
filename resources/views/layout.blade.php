@@ -5,17 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>My Weather App</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="css/app.css" rel="stylesheet" type="text/css">
-        <link href="css/style.css" rel="stylesheet" type="text/css">
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="{{ elixir('js/script.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
 
+        </script>
 
     <body>
 
@@ -30,8 +31,11 @@
         </div>
       </nav>
 
+      <div class="time-blocks">
 
-      @yield('content')
+        @yield('content')
+
+      </div>
 
 
     </body>

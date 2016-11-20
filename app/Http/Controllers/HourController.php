@@ -19,8 +19,7 @@ class HourController extends Controller
     $hourCollection = collect();
 
     for($i = 0; $i < sizeOf($hourWeather['data']); $i++ ) {
-
-      $time = date("F j, Y, g:i a", $hourWeather['data'][$i]['time']);
+      $time = date("g:i a, F j", $hourWeather['data'][$i]['time']);
       $summary = $hourWeather['data'][$i]['summary'];
       $icon = $hourWeather['data'][$i]['icon'];
       $humidity = $hourWeather['data'][$i]['humidity'];
@@ -30,7 +29,7 @@ class HourController extends Controller
       $hour = WeatherDataFactories::createHour($time, $summary, $icon, $humidity, $precipProbability);
       $hour->setTemp($temp);
       $hourCollection->push($hour);
-      
+
     }
 
     return view('hourly')->with(['hourCollection' => $hourCollection]);

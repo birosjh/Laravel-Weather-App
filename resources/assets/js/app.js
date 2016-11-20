@@ -1,20 +1,23 @@
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
- */
+window.onload = function() {
 
-Vue.component('example', require('./components/Example.vue'));
+  var skycons = new Skycons({"color": "black"});
 
-const app = new Vue({
-    el: 'body'
-});
+
+  console.log($("#time-blocks > div").length);
+
+  for(var i = 0; i < 49; i++ ) {
+    skycons.set("" + i, $("#" + i).attr("class"));
+  }
+
+  skycons.play();
+
+
+  const app = new Vue({
+      el: 'body'
+  });
+
+
+}

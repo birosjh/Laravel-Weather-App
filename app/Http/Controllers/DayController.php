@@ -16,7 +16,6 @@ class DayController extends Controller
   {
     $latAndLong = "42.3601,-71.0589";
     $dayWeather = GetWeatherInfo::getDayWeather($latAndLong);
-    Log::debug($dayWeather);
     $dayCollection = collect();
 
     for($i = 0; $i < sizeOf($dayWeather['data']); $i++){
@@ -32,9 +31,7 @@ class DayController extends Controller
       $dayCollection[$i]->setMinTemp($minTemp);
       $dayCollection[$i]->setMaxTemp($maxTemp);
 
-
     }
-
 
     return view('daily')->with(['dayCollection' => $dayCollection]);
 

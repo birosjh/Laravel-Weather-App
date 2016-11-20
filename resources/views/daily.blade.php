@@ -13,25 +13,44 @@
 
   @foreach($dayCollection as $day)
 
-  <div class="day container">
+    @if($loop->first)
 
-    <p>Time: {{ $day->getTime() }}</p>
+      @continue
 
-    <p>Summary: {{ $day->getSummary() }}</p>
+    @endif
 
-    <p>Icon: {{ $day->getIcon() }}</p>
+    <div class="day">
 
-    <p>Humidity: {{ $day->getHumidity() }}</p>
+      <h2>{{ $day->getTime() }}</h2>
 
-    <p>Precip Probability: {{ $day->getPrecipProbability() }}</p>
+      <canvas id="{{ $loop->index }}" class="{{ $day->getIcon() }}" width="100" height="100"></canvas>
 
-    <p>Max Temp: {{ $day->getMaxTemp() }}</p>
+      <div class="summary-wrapper">
+        <strong><p class="summary">{{ $day->getSummary() }}</p></strong>
+      </div>
 
-    <p>Min Temp: {{ $day->getMinTemp() }}</p>
+      <div class="details-wrapper">
+        <div class="row">
+          <div class="col-xs-6">
+            <p>High</p>
+            <p>{{ $day->getMaxTemp() }}F</p>
+            <p>Humidity:</p>
+            <p>{{ $day->getHumidity() * 100 }}%</p>
+          </div>
+          <div class="col-xs-6">
+            <p>Low</p>
+            <p>{{ $day->getMinTemp() }}F</p>
+            <p>Rain:</p>
+            <p>{{ $day->getPrecipProbability() * 100 }}%</p>
+          </div>
+        </div>
 
-  </div>
+      </div>
+
+    </div>
 
   @endforeach
+
 
 
 @stop

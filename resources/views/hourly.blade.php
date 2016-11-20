@@ -4,31 +4,31 @@
 @section('navigation-bar')
 
 <li><a href="/">Home</a></li>
-<li class="active"><a>hourly Forecast</a></li>
+<li class="active"><a>Hourly Forecast</a></li>
 <li><a href="weekly-forecast">Weekly Forecast</a></li>
 
 @stop
 
 @section('content')
 
-@foreach($hourCollection as $hour)
+  @foreach($hourCollection as $hour)
 
-<div class="hour container">
+    <div class="hour">
 
-  <p>Time: {{ $hour->getTime() }}</p>
+      <h3>{{ $hour->getTime() }}</h3>
 
-  <p>Summary: {{ $hour->getSummary() }}</p>
+      <p>Summary: {{ $hour->getSummary() }}</p>
 
-  <p>Icon: {{ $hour->getIcon() }}</p>
+      <canvas id="{{ $loop->index }}" class="{{ $hour->getIcon() }}" width="100" height="100"></canvas>
 
-  <p>Humidity: {{ $hour->getHumidity() }}</p>
+      <p>Humidity: {{ $hour->getHumidity() }}</p>
 
-  <p>Precip Probability: {{ $hour->getPrecipProbability() }}</p>
+      <p>Precip Probability: {{ $hour->getPrecipProbability() }}</p>
 
-  <p>Temp: {{ $hour->getTemp() }}</p>
+      <p>Temp: {{ $hour->getTemp() }}</p>
 
-</div>
+    </div>
 
-@endforeach
+  @endforeach
 
 @stop
