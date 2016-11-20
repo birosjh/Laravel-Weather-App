@@ -5767,7 +5767,8 @@ button.close {
     display: none !important; } }
 
 body {
-  background-color: grey; }
+  background-color: grey;
+  color: black; }
 
 canvas {
   margin-top: 30px;
@@ -5777,7 +5778,6 @@ h2 {
   color: black; }
 
 .day {
-  text-align: center;
   width: 13.5%;
   height: 510px;
   display: inline-block; }
@@ -5787,16 +5787,21 @@ h2 {
   bottom: 10px;
   left: 10%; }
 
+.temp {
+  font-size: 30px;
+  font-weight: bold; }
+
 .time-blocks {
-  margin: 3px; }
+  margin: 3px;
+  text-align: center; }
 
 .time-unit, .day, .hour {
-  background-color: #49749c;
   border: 1px solid black;
   border-radius: 5px;
   margin: 3px;
   position: relative;
-  overflow: auto; }
+  overflow: auto;
+  text-align: center; }
   .time-unit p, .day p, .hour p {
     color: black; }
 

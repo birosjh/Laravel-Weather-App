@@ -16,7 +16,7 @@ class CurrentController extends Controller
     {
       $latAndLong = "42.3601,-71.0589";
       $currentWeather = GetWeatherInfo::getCurrentWeather($latAndLong);
-      $time = $currentWeather['time'];
+      $time = date("l, F j", $currentWeather['time']);
       $summary = $currentWeather['summary'];
       $icon = $currentWeather['icon'];
       $humidity = $currentWeather['humidity'];

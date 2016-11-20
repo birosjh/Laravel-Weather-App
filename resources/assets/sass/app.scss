@@ -8,8 +8,11 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+$time-unit-margin: 3px;
+
 body {
   background-color: grey;
+  color: black;
 }
 
 canvas {
@@ -23,7 +26,6 @@ h2 {
 
 .day{
   @extend .time-unit;
-  text-align: center;
   width: 13.5%;
   height: 510px;
   display: inline-block;
@@ -40,17 +42,23 @@ h2 {
 
 }
 
+.temp {
+  font-size: 30px;
+  font-weight: bold;
+}
+
 .time-blocks {
-  margin: 3px;
+  margin: $time-unit-margin;
+  text-align: center;
 }
 
 .time-unit {
-  background-color: #49749c;
   border: 1px solid black;
   border-radius: 5px;
-  margin: 3px;
+  margin: $time-unit-margin;
   position: relative;
   overflow: auto;
+  text-align: center;
   p {
     color: black;
   }

@@ -14,19 +14,28 @@
   @foreach($hourCollection as $hour)
 
     <div class="hour">
-
-      <h3>{{ $hour->getTime() }}</h3>
-
-      <p>Summary: {{ $hour->getSummary() }}</p>
-
-      <canvas id="{{ $loop->index }}" class="{{ $hour->getIcon() }}" width="100" height="100"></canvas>
-
-      <p>Humidity: {{ $hour->getHumidity() }}</p>
-
-      <p>Precip Probability: {{ $hour->getPrecipProbability() }}</p>
-
-      <p>Temp: {{ $hour->getTemp() }}</p>
-
+      <div class="row">
+        <div class="col-md-6">
+          <div class="column-one">
+            <h2>{{ $hour->getTime() }}</h2>
+            <strong><p>{{ $hour->getSummary() }}</p></strong>
+            <p class="temp">{{ $hour->getTemp() }} F</p>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <p>Humidity</p>
+              <p>{{ $hour->getHumidity() }}%</p>
+            </div>
+            <div class="col-xs-6">
+              <p>Rain</p>
+              <p>{{ $hour->getPrecipProbability() }}%</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <canvas id="{{ $loop->index }}" class="{{ $hour->getIcon() }}" width="200" height="200"></canvas>
+        </div>
+      </div>
     </div>
 
   @endforeach
